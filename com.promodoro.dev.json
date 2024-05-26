@@ -1,0 +1,34 @@
+{
+	"app-id": "com.github.siddh34.pomodoroapp",
+	"runtime": "org.freedesktop.Platform",
+	"runtime-version": "20.08",
+	"sdk": "org.freedesktop.Sdk",
+	"command": "pomodoro-app",
+	"finish-args": ["--share=ipc", "--socket=fallback-x11", "--socket=wayland"],
+	"modules": [
+		{
+			"name": "openpomodoro-cli",
+			"buildsystem": "simple",
+			"build-commands": ["make", "make install"],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://github.com/open-pomodoro/openpomodoro-cli/releases/download/v0.3.0/openpomodoro-cli-v0.3.0.tar.gz",
+					"sha256": "insert-sha256-checksum-here"
+				}
+			]
+		},
+		{
+			"name": "pomodoro-app",
+			"buildsystem": "simple",
+			"build-commands": ["make", "make install"],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://github.com/siddh34/pomodoro-app/releases/download/pomodoro-app_v1.0.1/pomodoro-app_v1.0.1.tar.gz",
+					"sha256": "insert-sha256-checksum-here"
+				}
+			]
+		}
+	]
+}
