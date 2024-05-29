@@ -1,0 +1,38 @@
+{
+	"app-id": "com.pomodoro.dev",
+	"runtime": "org.freedesktop.Platform",
+	"runtime-version": "23.08",
+	"sdk": "org.freedesktop.Sdk",
+	"command": "pomodoro-app",
+	"finish-args": ["--share=ipc", "--socket=fallback-x11", "--socket=wayland"],
+	"modules": [
+		{
+			"name": "openpomodoro-cli",
+			"buildsystem": "simple",
+			"build-commands": [
+				"ls",
+				"tar -zxvf openpomodoro-cli_0.3.0_linux_amd64.tar.gz",
+				"mv pomodoro /usr/local/bin/"
+			],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://github.com/open-pomodoro/openpomodoro-cli/releases/download/v0.3.0/openpomodoro-cli_0.3.0_linux_amd64.tar.gz",
+					"sha256": "4ae160d15d1ca22e7a3dbb8f69c4b7e2e65c548d3e0bf9a9bbe43ec6f40a099b"
+				}
+			]
+		},
+		{
+			"name": "pomodoro-app",
+			"buildsystem": "simple",
+			"build-commands": ["dpkg -i pomodoro-app_1.0.1_amd64.deb"],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://github.com/siddh34/pomodoro-app/releases/download/pomodoro-app_v1.0.1/pomodoro-app_1.0.1_amd64.deb",
+					"sha256": "f4decfdb59fb265d3cc79512b519bd4fe2459f07d344388b44b809daca031290"
+				}
+			]
+		}
+	]
+}
